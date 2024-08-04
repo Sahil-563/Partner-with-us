@@ -1,9 +1,14 @@
+/* Import Tailwind Directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Global Body Styles */
 body {
   background-color: #f0f0f0;
 }
+
+/* Define Custom CSS Variables */
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -61,6 +66,7 @@ body {
   }
 }
 
+/* Base Layer Styles */
 @layer base {
   * {
     @apply border-border;
