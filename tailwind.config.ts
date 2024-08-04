@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
+import { PluginAPI } from "tailwindcss/types/config";
 
-const config = {
+const config: Config = {
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -18,7 +19,15 @@ const config = {
       },
     },
     extend: {
+      boxShadow: {
+        "top-only":
+          "0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06)",
+        "each-corner":
+          "5px 5px 10px rgba(0, 0, 0, 0.02), -5px 5px 10px rgba(0, 0, 0, 0.02),5px -5px 10px rgba(0, 0, 0, 0.02), -5px -5px 10px rgba(0, 0, 0, 0.02)",
+      },
       colors: {
+        customBlue: "rgb(39, 129, 231)",
+        customGray: "rgb(232, 232, 232)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -60,6 +69,7 @@ const config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        "50": "50px",
       },
       keyframes: {
         "accordion-down": {
@@ -77,7 +87,16 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addUtilities }: PluginAPI) {
+      addUtilities({
+        ".clip-custom": {
+          "clip-path": "polygon(50% 0%, 0% 100%, 100% 100%)",
+        },
+      });
+    },
+  ],
+};
 
 export default config;

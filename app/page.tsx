@@ -1,7 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import heroImg from "../assets/banner.jpg";
 import { Button } from "@/components/ui/button";
 import { FaRegCheckCircle } from "react-icons/fa";
+
 export default function Home() {
   return (
     <>
@@ -27,7 +29,7 @@ export default function Home() {
               </p>
               <div>
                 <Button className="bg-blue-500 text-white text-lg hover:bg-blue-700">
-                  Register your clinic
+                  <Link href="/register"> Register your clinic</Link>
                 </Button>
                 <Button variant="secondary" className="md:ml-4 text-lg mt-4">
                   Login to view your existing clinics
